@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1458983127006556}
+  m_IsPrefabAsset: 1
+--- !u!1 &1458983127006556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4172760137051586}
+  - component: {fileID: 114422871710510400}
+  m_Layer: 0
+  m_Name: Enemy Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4172760137051586
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458983127006556}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114422871710510400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458983127006556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da69792118294844e90f5d0aab9e4a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveConfigs:
+  - {fileID: 11400000, guid: f0cdd8c983a645146b48e5552072b961, type: 2}
+  - {fileID: 11400000, guid: 397b823bb0904f94f9bef1fdf4956182, type: 2}
+  - {fileID: 11400000, guid: e4e5134ca0d0a884e9b1ecf5f44668b9, type: 2}
+  - {fileID: 11400000, guid: ab116867e929c0a44b9d9d484adfa35d, type: 2}
+  - {fileID: 11400000, guid: 437d0d19ba8d95d4b9d2bca20dd64008, type: 2}
+  - {fileID: 11400000, guid: 3a0d79e80da8e7548b684c3f450202f5, type: 2}
+  bossPrefab: {fileID: 1020739512963078, guid: 6596e39c398dbc24188129e48e0f01fa, type: 2}
+  bossPathPrefab: {fileID: 1117385967373028, guid: a0beae97d974e4649974d24733387193,
+    type: 2}
+  startingWave: 0
+  looping: 1
+  numberOfWaves: 1

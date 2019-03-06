@@ -1,0 +1,60 @@
+----------------------------------------------------------------------------------
+[CREATOR]
+Created by: NV-6155
+Last updated: July 26, 2018
+
+[LATEST SPECIFICATIONS]
+|OS|
+Windows 10
+- Version 10.0.16299
+- Build 16299
+|Other|
+Windows Registry Editor
+- Version 5.00
+----------------------------------------------------------------------------------
+[TERMS OF USE]
+BY USING THE ITEMS CONTAINED IN THIS PACKAGE, YOU AGREE WITH THE FOLLOWING TERMS:
+- YOU ARE CHOOSING TO USE THESE ITEMS AT YOUR OWN RISK
+- THE CREATOR IS NOT RESPONSIBLE NOR LIABLE FOR ANY DAMAGE THESE ITEMS MAY CAUSE
+- THE CREATOR RESERVES THE RIGHT TO TERMINATE AVAILIBILITY, SUPPORT, AND/OR UPDATES FOR THESE ITEMS AT ANY TIME WITHOUT PRIOR NOTICE
+- YOU MAY FREELY SHARE/MODIFY/DUPLICATE THESE ITEMS, BUT CREDIT MUST BE PROPERLY ATTRIBUTED TO THE CREATOR
+
+[GENERAL NOTICE/DISCLAIMER]
+- THE ITEMS CONTAINED IN THIS PACKAGE ARE CONFIRMED TO WORK ON SYSTEMS WITH THE SPECIFICATIONS LISTED ABOVE ONLY. THE ITEMS MAY OR MAY NOT WORK ON SYSTEMS WITH OLDER/NEWER SPECIFICATIONS; USE WITH ALTERNATE SPECIFICATIONS AT YOUR OWN RISK.
+
+[PACKAGE SPECIFIC NOTICE/DISCLAIMER]
+- THIS PACKAGE CONTAINS ITEMS THAT MODIFY WINDOWS REGISTRY KEYS. MODIFYING REGISTRY KEYS CAN CAUSE SERIOUS ISSUES WITH YOUR SYSTEM IF DONE IMPROPERLY. THE ITEMS IN THIS PACKAGE HAVE BEEN TESTED THOROUGHLY AND, AS LONG AS THE INSTRUCTIONS ARE CAREFULLY FOLLOWED, SHOULD NOT CAUSE ISSUES WITH SYSTEMS USING THE SPECIFICATIONS LISTED ABOVE.
+- THIS PACKAGE CONTAINS ITEMS THAT MODIFY THE SYSTEM DEFAULT FONT. CHANGING THE SYSTEM DEFAULT FONT MAY CAUSE ISSUES WITH SOME PROGRAMS AND/OR MAKE SOME/ALL TEXT UNREADABLE. USE AT YOUR OWN RISK.
+----------------------------------------------------------------------------------
+[INSTRUCTIONS]
+
+==Install NMS font==
+Simply right-click "geonms-font.ttf" and click "Install". If you only want to use the NMS font as a typefont (i.e. as a font choice in word processors), this is all you needed to do. Only perform the following steps if you want to use the NMS font for system text (program header bars, taskbar clock, menus, etc).
+
+==Change system font to NMS==
+NOTE: Font will only be changed where the system default font is used. Text for the Windows 10 lock screen, web pages, etc. will not be changed as their font settings cannot be accessed by these scripts.
+
+1. Close all open programs.
+
+2. Double-click "NMSFont.reg".
+
+3. Grant admin authorization if Windows asks for it.
+
+4. Windows should warn you that registry files will be modified; as long as you are following these instructions you may click "Yes" to allow the changes.
+
+5. Restart your computer.
+
+6. Confirm the system default font has changed by opening File Explorer.
+
+==Change system font back to default==
+1. Close all open programs.
+
+2. Double-click "RevertToDefault.reg".
+
+3. Grant admin authorization if Windows asks for it.
+
+4. Windows should warn you that registry files will be modified; as long as you are following these instructions you may click "Yes" to allow the changes.
+
+5. Restart your computer.
+
+6. Confirm the system default font has changed by opening File Explorer.

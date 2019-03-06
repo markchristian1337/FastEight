@@ -1,0 +1,108 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Enemy2 : MonoBehaviour {
+
+    [Header("EnemyInfo")]
+    [SerializeField] int scoreValue = 150;
+    [SerializeField] float health = 100;
+    [Header("Shooting")]
+    [SerializeField] float shotCounter;
+    [SerializeField] float minTimeBetweenShots = 0.2f;
+    [SerializeField] float maxTimeBetweenShots = 3f;
+    [SerializeField] GameObject projectile;
+    [SerializeField] float projectileSpeed = 10f;
+    int numOfShots = 3;
+    float spreadAngle = 5.0f;
+    [Header("SoundEffects")]
+    [SerializeField] GameObject deathVFX;
+    [SerializeField] float durationOfExplosion = 1f;
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] [Range(0,1)] float deathSoundVolume = 0.75f;
+    [SerializeField] AudioClip shootSound;
+    [SerializeField] [Range(0, 1)] float shootSoundVolume = 0.25f;
+
+    Color normalColor;
+    Color hitColor;
+
+    // Use this for initialization
+    void Start () {
+        Renderer rend = GetComponent<Renderer>();
+        normalColor = rend.material.color;
+        hitColor = Color.red;
+        if (numOfShots / 2 * 2 == numOfShots) numOfShots++; // Need an odd number of shots
+        if (numOfShots < 3) numOfShots = 3;  // At least 3 shots for a fan
+        shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        CountDownAndShoot();
+	}
+
+    private void CountDownAndShoot()
+    {
+        shotCounter -= Time.deltaTime;
+        if (shotCounter <= 0f)
+        {
+
+            Fire();
+            shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        }
+    }
+
+    private void Fire()
+    {
+        var qAngle = Quaternion.AngleAxis(-numOfShots / 2.0f * spreadAngle, transform.up) * transform.rotation;
+        var qDelta = Quaternion.AngleAxis(spreadAngle, transform.up);
+        for (var i = 0; i < numOfShots; i++)
+        {
+            GameObject laser = Instantiate(projectile, transform.position, qAngle);
+            laser.GetComponent<Rigidbody2D>().AddForce(laser.transform.forward * 1000.0f);
+            qAngle = qDelta * qAngle;
+        }
+            //GameObject laser = Instantiate(projectile, transform.position, rotation: ) as GameObject;
+            //laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+        if (!damageDealer) { return; }
+        ProcessHit(damageDealer);
+        StartCoroutine(Flasher(normalColor, hitColor));
+
+    }
+
+    IEnumerator Flasher(Color normColor, Color hitColor)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            GetComponent<Renderer>().material.color = hitColor;
+            yield return new WaitForSeconds(.1f);
+            GetComponent<Renderer>().material.color = normColor;
+            yield return new WaitForSeconds(.1f);
+        }
+    }
+
+    private void ProcessHit(DamageDealer damageDealer)
+    {
+        health -= damageDealer.GetDamage();
+        damageDealer.Hit();
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        FindObjectOfType<GameSession>().AddToScore(scoreValue);
+        Destroy(gameObject);
+        GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
+        Destroy(explosion, durationOfExplosion);
+        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+    }
+}
